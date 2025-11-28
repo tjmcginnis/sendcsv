@@ -7,10 +7,7 @@ proxy:
   ssl: true
   host: app.sendcsv.com
 registry:
-  server: registry.digitalocean.com
-  username: KAMAL_REGISTRY_USERNAME
-  password:
-    - KAMAL_REGISTRY_PASSWORD
+  server: localhost:5555
 env:
   secret:
     - RAILS_MASTER_KEY
