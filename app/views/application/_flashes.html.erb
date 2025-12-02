@@ -1,0 +1,9 @@
+<% flash.each do |type, messages| %>
+  <% Array(messages).each do |message| %>
+    <% if type.to_s == "notice" %>
+      <%= render "application/notice", type:, message: %>
+    <% elsif type.to_s == "alert" %>
+      <%= render "application/alert", type:, message: %>
+    <% end %>
+  <% end %>
+<% end %>
