@@ -1,0 +1,40 @@
+<div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+  <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+    <%= image_tag "table-cells.svg", alt: "SendCSV", class: "mx-auto h-10 w-auto mt-10" %>
+    <h2 class="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900 dark:text-white">Sign in</h2>
+  </div>
+
+  <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+    <%= form_with url: session_url, class: "space-y-6" do |form| %>
+      <div>
+        <label for="email" class="block text-sm/6 font-medium text-gray-900 dark:text-gray-100">Email address</label>
+        <div class="mt-2">
+          <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", value: params[:email_address], class: "block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-blue-grey-600 sm:text-sm/6 dark:bg-white/5 dark:text-white dark:outline-white/10 dark:placeholder:text-gray-500 dark:focus:outline-blue-grey-500" %>
+        </div>
+      </div>
+
+      <div>
+        <div class="flex items-center justify-between">
+          <label for="password" class="block text-sm/6 font-medium text-gray-900 dark:text-gray-100">Password</label>
+          <div class="text-sm">
+            <%= link_to "Forgot password?", new_password_path, class: "font-semibold-text-blue-grey-600 hover:text-blue-grey-500 dark:text-blue-grey-400 dark:hover:text-blue-grey-300" %>
+          </div>
+        </div>
+        <div class="mt-2">
+          <%= form.password_field :password, required: true, autocomplete: "current-password", maxlength: 72, class: "block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-blue-grey-600 sm:text-sm/6 dark:bg-white/5 dark:text-white dark:outline-white/10 dark:placeholder:text-gray-500 dark:focus:outline-blue-grey-500" %>
+        </div>
+      </div>
+
+      <div>
+        <%= form.submit "Sign in", class: "flex w-full justify-center rounded-md bg-blue-grey-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs hover:bg-blue-grey-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-grey-600 dark:bg-blue-grey-500 dark:shadow-none dark:hover:bg-blue-grey-400 dark:focus-visible:outline-blue-grey-500" %>
+      </div>
+    <% end %>
+
+    <%# TODO: Link to sign up page when implemented %>
+    <p class="mt-10 text-center text-sm/6 text-gray-500 dark:text-gray-400">
+      Need an account?
+      <a href="#" class="font-semibold text-blue-grey-600 hover:text-blue-grey-500 dark:text-blue-grey-400 dark:hover:text-blue-grey-300">Sign up</a>
+    </p>
+  </div>
+</div>
+
