@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="h-full bg-white dark:bg-blue-grey-900">
   <head>
     <title><%= content_for(:title) || "SendCSV" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -23,36 +23,38 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
+  <body class="h-full">
     <div class="min-h-full">
 
-      <nav class="bg-blue-grey-600 dark:bg-blue-grey-800">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div class="flex h-16 items-center justify-between">
-            <div class="flex items-center">
-              <div class="shrink-0">
-                <%= image_tag "table-cells.svg", alt: "SendCSV", class: "size-8" %>
-              </div>
-              <div class="block">
-                <div class="ml-10 flex items-baseline space-x-4">
-                  <%# TODO: This should use link_to helper %>
-                  <a href="#" aria-current="page" class="rounded-md bg-blue-grey-700 px-3 py-2 text-sm font-medium text-white dark:bg-blue-grey-400/40">Tables</a>
+      <% if authenticated? %>
+        <nav class="bg-blue-grey-600 dark:bg-blue-grey-800">
+          <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="flex h-16 items-center justify-between">
+              <div class="flex items-center">
+                <div class="shrink-0">
+                  <%= image_tag "table-cells.svg", alt: "SendCSV", class: "size-8" %>
+                </div>
+                <div class="block">
+                  <div class="ml-10 flex items-baseline space-x-4">
+                    <%# TODO: This should use link_to helper %>
+                    <a href="#" aria-current="page" class="rounded-md bg-blue-grey-700 px-3 py-2 text-sm font-medium text-white dark:bg-blue-grey-400/40">Tables</a>
+                  </div>
                 </div>
               </div>
+
+              <%# TODO: Add user dropdown menu when more user actions are available %>
             </div>
-
-            <%# TODO: Add user dropdown menu when more user actions are available %>
           </div>
-        </div>
-      </nav>
+        </nav>
 
-      <header class="relative bg-white shadow-sm dark:bg-blue-grey-600 dark:shadow-none dark:after:pointer-events-none dark:after:absolute dark:after:inset-x-0 dark:after:bottom-0 dark:after:h-px dark:after:bg-white/10">
-        <div class="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
-          <h1 class="text-lg/6 font-semibold text-gray-900 dark:text-white">
-            <%= yield :heading %>
-          </h1>
-        </div>
-      </header>
+        <header class="relative bg-white shadow-sm dark:bg-blue-grey-600 dark:shadow-none dark:after:pointer-events-none dark:after:absolute dark:after:inset-x-0 dark:after:bottom-0 dark:after:h-px dark:after:bg-white/10">
+          <div class="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
+            <h1 class="text-lg/6 font-semibold text-gray-900 dark:text-white">
+              <%= yield :heading %>
+            </h1>
+          </div>
+        </header>
+      <% end %>
 
       <main>
         <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
