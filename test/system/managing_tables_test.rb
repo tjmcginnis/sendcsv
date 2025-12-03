@@ -7,5 +7,7 @@ class ManagingTablesTest < ApplicationSystemTestCase
   end
 
   test "managing tables" do
+    assert_selector "p", text: tables(:one).name
+    assert_selector "p", text: tables(:one).public_id
   end
 end

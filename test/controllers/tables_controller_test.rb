@@ -6,8 +6,7 @@ class TablesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "index" do
-    # TODO: Use helper once model created
-    get "/"
+    get root_url
     assert_response :success
   end
 end
