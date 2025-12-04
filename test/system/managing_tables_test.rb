@@ -9,5 +9,9 @@ class ManagingTablesTest < ApplicationSystemTestCase
   test "managing tables" do
     assert_selector "p", text: tables(:one).name
     assert_selector "p", text: tables(:one).public_id
+
+    click_on "View table"
+
+    assert_selector "h1", text: tables(:one).name
   end
 end

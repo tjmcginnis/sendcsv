@@ -9,4 +9,14 @@ class TablesControllerTest < ActionDispatch::IntegrationTest
     get root_url
     assert_response :success
   end
+
+  test "show" do
+    get table_url(tables(:one))
+    assert_response :success
+  end
+
+  test "ensure user can't view a table belonging to another user" do
+    get table_url(tables(:two))
+    assert_response :not_found
+  end
 end

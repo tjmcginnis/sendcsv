@@ -1,11 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  public_id: MyString
+  name: One
+  public_id: izkpm55j334u
   user: one
 
 two:
-  name: MyString
-  public_id: MyString
+  name: Two
+  public_id: z2n60bhrj7e8
   user: two
