@@ -4,8 +4,10 @@ one:
   name: One
   public_id: izkpm55j334u
   user: one
+  header: ["Name", "Age", "City"]
 
 two:
   name: Two
   public_id: z2n60bhrj7e8
   user: two
+  header: []

@@ -13,5 +13,8 @@ class ManagingTablesTest < ApplicationSystemTestCase
     click_on "View table"
 
     assert_selector "h1", text: tables(:one).name
+    assert_selector "th", text: "Name"
+    assert_selector "th", text: "Age"
+    assert_selector "th", text: "City"
   end
 end
