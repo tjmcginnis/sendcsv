@@ -16,5 +16,17 @@ class ManagingTablesTest < ApplicationSystemTestCase
     assert_selector "th", text: "Name"
     assert_selector "th", text: "Age"
     assert_selector "th", text: "City"
+
+    assert_selector "td", text: "Tyler"
+    assert_selector "td", text: 37
+    assert_selector "td", text: "Amherst"
+
+    assert_selector "td", text: "Penny"
+    assert_selector "td", text: 10
+    assert_selector "td", text: "Santa Cruz"
+
+    assert_selector "td", text: "Tony"
+    assert_selector "td", text: 15
+    assert_selector "td", text: "Philadelphia"
   end
 end

@@ -1,9 +1,14 @@
 class TablesController < ApplicationController
   def index
-    @tables = Current.user.tables
+    @tables = tables
   end
 
   def show
-    @table = Current.user.tables.find_by!(public_id: params[:public_id])
+    @table = tables.with_rows.find_by!(public_id: params[:public_id])
   end
+
+  private
+    def tables
+      Current.user.tables
+    end
 end
