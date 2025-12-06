@@ -10,13 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_12_05_025230) do
+ActiveRecord::Schema[8.1].define(version: 2025_12_06_023929) do
+  create_table "ingestions", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "error_message"
+    t.string "public_id", limit: 12, null: false
+    t.integer "status", limit: 1, default: 0, null: false
+    t.integer "table_id", null: false
+    t.datetime "updated_at", null: false
+    t.index ["table_id"], name: "index_ingestions_on_table_id"
+  end
+
   create_table "rows", force: :cascade do |t|
     t.json "contents", default: [], null: false
     t.datetime "created_at", null: false
+    t.integer "ingestion_id", null: false
     t.string "public_id", limit: 12, null: false
     t.integer "table_id", null: false
     t.datetime "updated_at", null: false
+    t.index ["ingestion_id"], name: "index_rows_on_ingestion_id"
     t.index ["table_id"], name: "index_rows_on_table_id"
   end
 
@@ -47,6 +59,8 @@ ActiveRecord::Schema[8.1].define(version: 2025_12_05_025230) do
     t.index ["email_address"], name: "index_users_on_email_address", unique: true
   end
 
+  add_foreign_key "ingestions", "tables"
+  add_foreign_key "rows", "ingestions"
   add_foreign_key "rows", "tables"
   add_foreign_key "sessions", "users"
   add_foreign_key "tables", "users"

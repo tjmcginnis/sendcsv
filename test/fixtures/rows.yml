@@ -1,14 +1,17 @@
 one:
   public_id: 9vh0kihgzn6y
   table: one
+  ingestion: one
   contents: ["Tyler", 37, "Amherst"]
 
 two:
   public_id: cyfd8p42iv66
   table: one
+  ingestion: one
   contents: ["Penny", 10, "Santa Cruz"]
 
 three:
   public_id: g0pvqdpmmnz0
   table: one
+  ingestion: two
   contents: ["Tony", 15, "Philadelphia"]
