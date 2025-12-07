@@ -69,3 +69,5 @@ group :test do
 end
 
 gem "nanoid", "~> 2.0"
+
+gem "csv", "~> 3.3"

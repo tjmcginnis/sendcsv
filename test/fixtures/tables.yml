@@ -6,8 +6,8 @@ one:
   user: one
   header: ["Name", "Age", "City"]
 
-two:
-  name: Two
+empty:
+  name: Empty
   public_id: z2n60bhrj7e8
   user: two
   header: []

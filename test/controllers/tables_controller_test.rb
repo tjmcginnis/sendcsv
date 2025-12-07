@@ -16,7 +16,7 @@ class TablesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "ensure user can't view a table belonging to another user" do
-    get table_url(tables(:two))
+    get table_url(tables(:empty))
     assert_response :not_found
   end
 end

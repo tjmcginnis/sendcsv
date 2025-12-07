@@ -1,9 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  public_id: MyString
+  public_id: 4310ad6jwmii
   table: one
+  status: completed
 
 two:
-  public_id: MyString
-  table: two
+  public_id: j1n68mztqala
+  table: empty
+  status: pending
