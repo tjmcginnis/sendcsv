@@ -10,7 +10,7 @@
           <p class="text-sm/6 font-semibold text-gray-900 dark:text-white"><%= table.name %></p>
         </div>
         <div class="mt-1 flex items-center gap-x-2 text-xs/5 text-gray-500 dark:text-gray-400">
-          <p class="truncate"><%= table.public_id %></p>
+          <p class="truncate"><%= in_url(table.public_id) %></p>
         </div>
       </div>
       <div class="flex flex-none items-center gap-x-4">
@@ -26,8 +26,9 @@
               <path d="M10 3a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM10 8.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM11.5 15.5a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0Z" />
             </svg>
           </button>
-          <el-menu anchor="bottom end" popover class="w-32 origin-top-right rounded-md bg-white py-2 shadow-lg outline-1 outline-gray-900/5 transition transition-discrete [--anchor-gap:--spacing(2)] data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in dark:bg-gray-800 dark:shadow-none dark:-outline-offset-1 dark:outline-white/10">
-            <a href="#" class="block px-3 py-1 text-sm/6 text-gray-900 focus:bg-gray-50 focus:outline-hidden dark:text-white dark:focus:bg-white/5">Copy URL<span class="sr-only">, <%= table.name %></span></a>
+          <el-menu data-controller="clipboard" anchor="bottom end" popover class="w-32 origin-top-right rounded-md bg-white py-2 shadow-lg outline-1 outline-gray-900/5 transition transition-discrete [--anchor-gap:--spacing(2)] data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in dark:bg-gray-800 dark:shadow-none dark:-outline-offset-1 dark:outline-white/10">
+            <a href="#" data-action="clipboard#copy" class="block px-3 py-1 text-sm/6 text-gray-900 focus:bg-gray-50 focus:outline-hidden dark:text-white dark:focus:bg-white/5">Copy URL<span class="sr-only">, <%= table.name %></span></a>
+            <input class="hidden" data-clipboard-target="source" value="<%= in_url(table.public_id) %>" readonly />
             <a href="#" class="block px-3 py-1 text-sm/6 text-gray-900 focus:bg-gray-50 focus:outline-hidden dark:text-white dark:focus:bg-white/5">Delete<span class="sr-only">, <%= table.name %></span></a>
           </el-menu>
         </el-dropdown>
