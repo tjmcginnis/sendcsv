@@ -1,4 +1,5 @@
 class IngestionsController < ApplicationController
+  rate_limit to: 5, within: 1.second, only: :create
   allow_unauthenticated_access only: [ :create ]
   skip_before_action :verify_authenticity_token, only: [ :create ]
 
