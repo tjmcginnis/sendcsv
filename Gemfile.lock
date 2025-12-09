@@ -174,6 +174,8 @@ GEM
       logger
     mini_mime (1.1.5)
     minitest (5.26.2)
+    mocha (2.8.2)
+      ruby2_keywords (>= 0.0.5)
     msgpack (1.8.0)
     nanoid (2.0.0)
     net-imap (0.5.12)
@@ -307,6 +309,7 @@ GEM
     ruby-vips (2.2.5)
       ffi (~> 1.12)
       logger
+    ruby2_keywords (0.0.5)
     rubyzip (3.2.2)
     securerandom (0.4.1)
     selenium-webdriver (4.38.0)
@@ -411,6 +414,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   kamal
+  mocha (~> 2.8)
   nanoid (~> 2.0)
   openssl (~> 3.3)
   propshaft

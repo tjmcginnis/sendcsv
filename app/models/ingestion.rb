@@ -7,6 +7,8 @@ class Ingestion < ApplicationRecord
 
   enum :status, [ :pending, :processing, :completed, :failed ]
 
+  class DailyLimitExceededError < StandardError; end
+
   def process(raw_csv)
     transaction do
       csv_data = parse_csv(raw_csv)
@@ -22,7 +24,11 @@ class Ingestion < ApplicationRecord
           public_id: Row.generate_nanoid
         }
       end
+
+      validate_daily_row_limit!(new_rows.size)
+
       Row.insert_all(new_rows)
+      table.increment_daily_row_count(new_rows.size)
 
       update(status: :completed)
     end
@@ -30,6 +36,8 @@ class Ingestion < ApplicationRecord
     fail_with("Malformed CSV")
   rescue Table::HeaderMismatchError
     fail_with("CSV header is append only")
+  rescue DailyLimitExceededError => e
+    fail_with(e.message)
   rescue StandardError => e
     fail_with(e.message)
   end
@@ -37,6 +45,14 @@ class Ingestion < ApplicationRecord
   private
     def parse_csv(raw_csv)
       CSV.parse(raw_csv, headers: true)
+    end
+
+    def validate_daily_row_limit!(new_row_count)
+      current_count = table.daily_row_count
+
+      if current_count + new_row_count > Table::DAILY_ROW_LIMIT
+        raise DailyLimitExceededError, "Daily limit exceeded"
+      end
     end
 
     def fail_with(message)

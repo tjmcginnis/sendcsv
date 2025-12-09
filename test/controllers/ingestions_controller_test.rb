@@ -53,4 +53,12 @@ class IngestionsControllerTest < ActionDispatch::IntegrationTest
     post in_path(@table.public_id), params: mismatched_csv, headers: @csv_headers
     assert_response :unprocessable_entity
   end
+
+  test "create denied when daily row limit is exceeded" do
+    Table.any_instance.stubs(:daily_row_count).returns(10_000)
+    csv_data = "Name,Age,City\nTony,99,Philadelphia"
+
+    post in_path(@table.public_id), params: csv_data, headers: @csv_headers
+    assert_response :unprocessable_entity
+  end
 end

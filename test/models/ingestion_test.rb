@@ -56,4 +56,16 @@ class IngestionTest < ActiveSupport::TestCase
     assert ingestion.completed?
     assert_equal [ "Name", "Age" ], empty_table.reload.header
   end
+
+  test "processing fails when daily row limit exceeded" do
+    @table.stubs(:daily_row_count).returns(10_000)
+    csv = "Name,Age,City\nPenny,30,Santa Cruz"
+
+    assert_raises(StandardError) do
+      @ingestion.process(csv)
+    end
+
+    assert @ingestion.reload.failed?
+    assert_equal "Daily limit exceeded", @ingestion.error_message
+  end
 end
