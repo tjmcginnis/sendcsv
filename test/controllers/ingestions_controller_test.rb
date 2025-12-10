@@ -61,4 +61,24 @@ class IngestionsControllerTest < ActionDispatch::IntegrationTest
     post in_path(@table.public_id), params: csv_data, headers: @csv_headers
     assert_response :unprocessable_entity
   end
+
+  test "create denied when request body exceeds 256KB" do
+    # Generate a CSV larger than 256KB. Each row is ~100 bytes,
+    # so ~3000 rows = ~300KB
+    large_csv = "Name,Age,City,Description\n"
+    3000.times do |i|
+      large_csv += "Person#{i},#{20 + i % 50},City#{i % 100},This is a longer description field with some additional text content #{i}\n"
+    end
+
+    assert large_csv.bytesize > 256.kilobytes
+
+    assert_no_difference "Ingestion.count" do
+      post in_path(@table.public_id), params: large_csv, headers: @csv_headers
+    end
+
+    assert_response :content_too_large
+
+    json_response = JSON.parse(response.body)
+    assert_equal "Request body exceeds 256KB limit", json_response["error"]
+  end
 end
