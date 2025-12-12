@@ -12,6 +12,8 @@ class SmokeTest < ApplicationSystemTestCase
 
     assert_selector "h1", text: tables(:one).name, wait: 5
 
+    click_on "Table Settings"
+
     assert_field "Ingestion URL", with: in_url(tables(:one).public_id)
     assert_selector "button", text: "Copy to clipboard"
 
