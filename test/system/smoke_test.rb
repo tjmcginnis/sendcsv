@@ -17,6 +17,8 @@ class SmokeTest < ApplicationSystemTestCase
     assert_field "Ingestion URL", with: in_url(tables(:one).public_id)
     assert_selector "button", text: "Copy to clipboard"
 
+    assert_selector "button", text: "Export table"
+
     assert_selector "th", text: "Name"
     assert_selector "th", text: "Age"
     assert_selector "th", text: "City"
