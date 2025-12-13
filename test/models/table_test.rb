@@ -63,4 +63,23 @@ class TableTest < ActiveSupport::TestCase
     new_table.reload
     assert_equal 3, new_table.daily_row_count
   end
+
+  test "empty csv when empty table" do
+    empty_table = tables(:empty)
+    csv_output = empty_table.to_csv
+    assert_equal "\n", csv_output
+  end
+
+  test "csv with headers and rows" do
+    csv_output = @table.to_csv
+    parsed = CSV.parse(csv_output, headers: true)
+
+    assert_equal [ "Name", "Age", "City" ], parsed.headers
+    assert_equal 3, parsed.length
+
+    row_data = parsed.map(&:fields)
+    assert_includes row_data, [ "Tyler", "37", "Amherst" ]
+    assert_includes row_data, [ "Penny", "10", "Santa Cruz" ]
+    assert_includes row_data, [ "Tony", "15", "Philadelphia" ]
+  end
 end

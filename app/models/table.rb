@@ -1,3 +1,5 @@
+require "csv"
+
 class Table < ApplicationRecord
   include PublicIdGenerator
   belongs_to :user
@@ -13,6 +15,15 @@ class Table < ApplicationRecord
 
   def to_param
     public_id
+  end
+
+  def to_csv
+    CSV.generate(headers: true) do |csv|
+      csv << header
+      rows.find_each do |row|
+        csv << row.contents
+      end
+    end
   end
 
   def update_header!(new_header)
