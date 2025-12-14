@@ -35,4 +35,17 @@ class SmokeTest < ApplicationSystemTestCase
     assert_selector "td", text: 15
     assert_selector "td", text: "Philadelphia"
   end
+
+  test "empty table state" do
+    sign_in_as users(:two).email_address
+
+    click_on "View table"
+
+    assert_selector "h1", text: tables(:empty).name, wait: 5
+
+    assert_selector "h3", text: "This table is empty"
+
+    assert_field "Ingestion URL", with: in_url(tables(:empty).public_id)
+    assert_selector "button", text: "Copy to clipboard"
+  end
 end
