@@ -59,7 +59,7 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
-  gem "openssl", "~> 3.3"
+  gem "openssl", "~> 4.0"
 end
 
 group :test do
