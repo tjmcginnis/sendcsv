@@ -73,3 +73,5 @@ gem "nanoid", "~> 2.0"
 gem "csv", "~> 3.3"
 
 gem "mocha", "~> 2.8"
+
+gem "faker", "~> 3.5"
