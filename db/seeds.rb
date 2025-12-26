@@ -37,4 +37,5 @@ else
 
   seed_user "me@example.com", with_rows: true
   seed_user "you@example.com"
+  seed_user "manyrows@example.com"
 end
