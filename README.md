@@ -1,24 +1,5 @@
-# README
+# SendCSV
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+SendCSV is a web based ingestion sink for CSV data - [**app.sendcsv.com**](https://app.sendcsv.com).
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+![SendCSV Tables Screen](public/screenshot.png)
