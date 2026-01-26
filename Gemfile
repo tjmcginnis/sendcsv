@@ -74,4 +74,4 @@ gem "csv", "~> 3.3"
 
 gem "mocha", "~> 3.0"
 
-gem "faker", "~> 3.5"
+gem "faker", "~> 3.6"
